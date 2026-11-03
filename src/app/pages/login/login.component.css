@@ -1,18 +1,20 @@
-.auth-page {
-  max-width: 360px;
-  margin: 40px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+form button {
+  margin-right: 0.5rem;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 10px;
+h1 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.error {
-  color: #b00020;
+:host {
+  display: block;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }

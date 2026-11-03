@@ -2,7 +2,7 @@
   <div class="header">
     <h1>Categorías</h1>
     @if (authService.isAdmin()) {
-      <a routerLink="/categorias/nuevo">Nueva categoría</a>
+      <a class="pill" routerLink="/categorias/nuevo">Nueva categoría</a>
     }
   </div>
 
@@ -29,8 +29,10 @@
           <td>{{ c.descripcion }}</td>
           @if (authService.isAdmin()) {
             <td>
-              <a [routerLink]="['/categorias', c.id, 'editar']">Editar</a>
-              <button type="button" (click)="eliminar(c.id)">Eliminar</button>
+              <div class="acciones">
+                <a class="pill" [routerLink]="['/categorias', c.id, 'editar']">Editar</a>
+                <button class="pill danger" type="button" (click)="eliminar(c.id)">Eliminar</button>
+              </div>
             </td>
           }
         </tr>

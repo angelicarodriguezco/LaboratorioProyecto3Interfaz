@@ -2,7 +2,7 @@
   <div class="header">
     <h1>Productos</h1>
     @if (authService.isAdmin()) {
-      <a routerLink="/productos/nuevo">Nuevo producto</a>
+      <a class="pill" routerLink="/productos/nuevo">Nuevo producto</a>
     }
   </div>
 
@@ -35,8 +35,10 @@
           <td>{{ p.categoriaNombre }}</td>
           @if (authService.isAdmin()) {
             <td>
-              <a [routerLink]="['/productos', p.id, 'editar']">Editar</a>
-              <button type="button" (click)="eliminar(p.id)">Eliminar</button>
+              <div class="acciones">
+                <a class="pill" [routerLink]="['/productos', p.id, 'editar']">Editar</a>
+                <button class="pill danger" type="button" (click)="eliminar(p.id)">Eliminar</button>
+              </div>
             </td>
           }
         </tr>

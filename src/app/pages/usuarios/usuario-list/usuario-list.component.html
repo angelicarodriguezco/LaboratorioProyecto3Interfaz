@@ -1,1 +1,26 @@
-<p>usuario-list works!</p>
+<section class="page">
+  <h1>Usuarios registrados</h1>
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Roles</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (u of usuarios; track u.id) {
+        <tr>
+          <td>{{ u.id }}</td>
+          <td>{{ u.username }}</td>
+          <td>{{ u.roles.join(', ') }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
