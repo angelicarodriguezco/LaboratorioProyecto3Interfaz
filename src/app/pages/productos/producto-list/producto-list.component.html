@@ -1,1 +1,46 @@
-<p>producto-list works!</p>
+<section class="page">
+  <div class="header">
+    <h1>Productos</h1>
+    @if (authService.isAdmin()) {
+      <a routerLink="/productos/nuevo">Nuevo producto</a>
+    }
+  </div>
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Categoría</th>
+      @if (authService.isAdmin()) {
+        <th>Acciones</th>
+      }
+    </tr>
+    </thead>
+    <tbody>
+      @for (p of productos; track p.id) {
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.descripcion }}</td>
+          <td>{{ p.precio }}</td>
+          <td>{{ p.cantidadStock }}</td>
+          <td>{{ p.categoriaNombre }}</td>
+          @if (authService.isAdmin()) {
+            <td>
+              <a [routerLink]="['/productos', p.id, 'editar']">Editar</a>
+              <button type="button" (click)="eliminar(p.id)">Eliminar</button>
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>

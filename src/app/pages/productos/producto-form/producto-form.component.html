@@ -1,0 +1,42 @@
+<section class="page">
+  <h1>{{ esEdicion ? 'Editar producto' : 'Nuevo producto' }}</h1>
+
+  <form (ngSubmit)="onSubmit()">
+    <label>
+      Nombre
+      <input type="text" name="nombre" [(ngModel)]="producto.nombre" required />
+    </label>
+
+    <label>
+      Descripción
+      <input type="text" name="descripcion" [(ngModel)]="producto.descripcion" />
+    </label>
+
+    <label>
+      Precio
+      <input type="number" name="precio" [(ngModel)]="producto.precio" required />
+    </label>
+
+    <label>
+      Stock
+      <input type="number" name="cantidadStock" [(ngModel)]="producto.cantidadStock" required />
+    </label>
+
+    <label>
+      Categoría
+      <select name="categoriaId" [(ngModel)]="producto.categoriaId" required>
+        <option [ngValue]="0" disabled>Seleccione...</option>
+        @for (c of categorias; track c.id) {
+          <option [ngValue]="c.id">{{ c.nombre }}</option>
+        }
+      </select>
+    </label>
+
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+
+    <button type="submit">Guardar</button>
+    <a routerLink="/productos">Cancelar</a>
+  </form>
+</section>
